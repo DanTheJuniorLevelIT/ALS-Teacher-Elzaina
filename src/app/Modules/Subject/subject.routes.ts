@@ -12,6 +12,9 @@ import { CheckComponent } from './check/check.component';
 import { DiscussComponent } from './discuss/discuss.component';
 import { DiscussionComponent } from './discussion/discussion.component';
 import { StudentsComponent } from './students/students.component';
+import { AddmatComponent } from './addmat/addmat.component';
+import { UpdateLessonComponent } from './update-lesson/update-lesson.component';
+import { UploadComponent } from './upload/upload.component';
 
 export const subjectRoute: Routes = [
     { path: 'main', component: SubjectmainComponent,
@@ -21,6 +24,9 @@ export const subjectRoute: Routes = [
                 children: [
                     { path: 'modules', component: ModulesComponent },
                     { path: 'modules/:moduleid/mat', component: MatComponent }, // Dynamic moduleid for mat
+                    { path: 'modules/:moduleid/addmat', component: AddmatComponent },
+                    { path: 'modules/:moduleid/updateLesson', component: UpdateLessonComponent },
+                    { path: 'modules/:moduleid/upload', component: UploadComponent},
                     { path: 'modules/:moduleid/assess', component: AssessmentComponent },
                     { path: 'modules/:moduleid/discuss', component: DiscussComponent },
                     { path: 'modules/:moduleid/mat/lesson', component: LessonComponent },

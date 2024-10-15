@@ -17,6 +17,7 @@ export class ModulesmainComponent implements OnInit{
   subjectDetail: any;
   classid: any;
   isModalOpen = false;
+  
 
   constructor(
     private apiserv: ApiserviceService, 
@@ -37,10 +38,12 @@ export class ModulesmainComponent implements OnInit{
     // Get the subjectId from route parameters
     const classid = localStorage.getItem('subjectID');
     this.classid = classid;
+    
     this.route.params.subscribe(params => {
       this.subjectId = +params['id'];  // The '+' ensures it's treated as a number
       if (this.subjectId) {
         this.getSubjectDetails(this.classid);
+        localStorage.setItem('classid', this.classid);
       } else {
         console.error('Invalid ID:', this.subjectId);
       }
