@@ -24,8 +24,6 @@
     <div class="module" *ngFor="let lesson of lessons">
         <div class="module-header">
             <div>
-                <!-- <a [routerLink]="['/main/Subject/main/subject/modulesmain/modules/mat/lesson']">{{lesson.title}}</a>
-                <p>{{lesson.name}}</p> -->
                 <h5>{{lesson.topic_title}}</h5>
                 <p>{{lesson.lesson}}</p>
             </div>
@@ -44,16 +42,14 @@
         </div>
         <div class="file-link">
             <h6>Download Files</h6>
-            <!-- <a href="#"> {{lesson.filename}}</a><br> -->
-            <a *ngIf="lesson.file">{{ lesson.file }}</a>
+            <a *ngIf="lesson.file" href="http://localhost:8000/storage/{{lesson.file}}" download>{{ lesson.file }}</a>
             <i *ngIf="lesson.file" (click)="deleteFile(lesson.lesson_id)" class="fa fa-trash fa-1x" aria-hidden="true"></i>
 
             <!-- Displaying media files line by line -->
             <div *ngIf="lesson.media_files">
                 <ng-container *ngFor="let mediaFile of lesson.media_files.split(',')">
                     <!-- <img [src]="'http://localhost:8000/storage/' + mediaFile" alt="" class="card-img-top" style="width: 40px; height: 40px;"> -->
-                    <a>{{mediaFile}}</a>
-                    <!-- <i class="fa fa-trash fa-1x" aria-hidden="true"></i> -->
+                    <a href="http://localhost:8000/storage/{{mediaFile}}" download>{{mediaFile}}</a>
                     <br>
                 </ng-container>
             </div>

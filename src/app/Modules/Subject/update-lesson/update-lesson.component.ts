@@ -73,7 +73,6 @@ export class UpdateLessonComponent  implements OnInit{
       );
     } else {
       console.error('Form is invalid');
-      // Add some error feedback to the user
     }
   }
   

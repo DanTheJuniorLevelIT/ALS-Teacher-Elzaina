@@ -61,7 +61,7 @@ export class UploadComponent implements OnInit{
   }
 
   getLessons(id: number) {
-    this.apiserv.getLesson(id).subscribe(
+    this.apiserv.getLeson(id).subscribe(
       (response) => {
         this.lessons = response;   
         this.LessonDetails = response;

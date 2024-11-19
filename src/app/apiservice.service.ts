@@ -131,6 +131,10 @@ export class ApiserviceService {
     const headers = {'Authorization': 'Bearer ' + this.token};
     return this.http.get(`${this.url}api/modules/getlessonid/${id}`, { headers });
   }
+  getLeson(id: number){
+    const headers = {'Authorization': 'Bearer ' + this.token};
+    return this.http.get(`${this.url}api/modules/getLesid/${id}`, { headers });
+  }
   updateLessonInfo(id: number, data: any) {
     const headers = { 'Authorization': 'Bearer ' + this.token };
     return this.http.patch(`${this.url}api/modules/updateLessonInfo/${id}`, data, { headers });

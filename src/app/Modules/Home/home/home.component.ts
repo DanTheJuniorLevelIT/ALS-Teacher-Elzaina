@@ -25,14 +25,14 @@ export class HomeComponent implements OnInit{
 
   notificationsOpen = false;
   notifications = [
-    { message: 'Emma Johnson have message you' },
-    { message: 'Liam Smith submitted his activity' },
-    { message: 'Ava Garcia sent a message' }
+    { message: 'Ava Garcia sent a message Aug 9, 2024', },
+    { message: 'Emma Johnson sent a message Aug 10, 2024' },
+    { message: 'Liam Smith sent a message Aug 11, 2024' }
   ];
 
   
   constructor(private apiserv: ApiserviceService, private route: Router) {
-    this.currentDate = new Date(); // Initialize with the current date and time
+    this.currentDate = new Date();
   }
 
   openModal() {
@@ -47,23 +47,15 @@ export class HomeComponent implements OnInit{
     this.notificationsOpen = !this.notificationsOpen;
   }
 
-  // ngOnInit(): void {
-  //   // setInterval(() => {
-  //   //   this.currentDate = new Date();
-  //   // }, 60000);
-  // }
-
   ngOnInit() {
     const id = localStorage.getItem('id');
     this.teacherid = id;
-    // this.apiserv.getSubjects().subscribe(
     this.apiserv.getTeacherSubjects(this.teacherid).subscribe(
       (response: any) => {
         this.sub = response.subject;
         this.shl = response.school;
         console.log(this.sub);
         console.log(this.shl);
-        // console.log(this.sub.school);
       },
       (error) => {
         console.error('Error fetching users:', error);
@@ -72,13 +64,7 @@ export class HomeComponent implements OnInit{
   }
 
   navigateToModules(subjectID: number) {
-    // Store the subjectID in localStorage
     localStorage.setItem('subjectID', subjectID.toString());
-
-    // Navigate to the modules page
-    // this.route.navigate(['/main/Subject/main/subject/modulesmain', subjectID, 'modules']);
     this.route.navigate(['/main/Subject/main/subject/modulesmain', subjectID]);
   }
-
-
 }
